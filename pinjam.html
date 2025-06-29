@@ -13,8 +13,24 @@
       src="https://kit.fontawesome.com/a076d05399.js"
       crossorigin="anonymous"
     ></script>
+    <style>
+      /* Tambahan style untuk mode gelap */
+      body.dark-mode {
+        background-color: #121212;
+        color: #f1f1f1;
+      }
+      body.dark-mode .form-control,
+      body.dark-mode .navbar,
+      body.dark-mode .card,
+      body.dark-mode .footer,
+      body.dark-mode input {
+        background-color: #1e1e1e;
+        color: #fff;
+        border-color: #444;
+      }
+    </style>
   </head>
-  <body class="light-mode">
+  <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
       <div class="container">
@@ -97,7 +113,6 @@
         </div>
         <p>Ikuti kami di media sosial:</p>
         <div class="mb-3">
-          <!-- Instagram -->
           <a
             href="https://www.instagram.com/hazisumam_"
             class="text-white me-3"
@@ -106,8 +121,6 @@
           >
             <i class="fab fa-instagram fa-lg"></i>
           </a>
-
-          <!-- Facebook -->
           <a
             href="https://web.facebook.com/lok.dok.965"
             class="text-white me-3"
@@ -116,8 +129,6 @@
           >
             <i class="fab fa-facebook fa-lg"></i>
           </a>
-
-          <!-- Lokasi di Google Maps -->
           <a
             href="https://www.google.com/maps/place/Rumah+Baca+Sembalun"
             class="text-white"
@@ -148,20 +159,41 @@
         }
 
         const pesan = `Halo Rumah Baca, saya ingin meminjam buku:\n\nNama: ${nama}\nJudul Buku: ${judulBuku}\nTanggal Pinjam: ${tanggalPinjam}\nTanggal Kembali: ${tanggalKembali}`;
-        const nomorWa = "6287849098363"; // Ganti dengan nomor WA tujuan
+        const nomorWa = "6287849098363";
         const url = `https://wa.me/${nomorWa}?text=${encodeURIComponent(
           pesan
         )}`;
-
         window.open(url, "_blank");
       }
+
       document.addEventListener("DOMContentLoaded", function () {
+        // Auto-isi judul buku dari URL jika ada
         const params = new URLSearchParams(window.location.search);
         const judul = params.get("judul");
         if (judul) {
-          const inputJudul = document.getElementById("judulBuku");
-          if (inputJudul) inputJudul.value = judul;
+          document.getElementById("judulBuku").value = judul;
         }
+
+        // Mode gelap/terang toggle
+        const modeToggle = document.getElementById("modeToggle");
+        const body = document.body;
+        const mode = localStorage.getItem("mode");
+
+        if (mode === "dark") {
+          body.classList.add("dark-mode");
+          modeToggle.textContent = "☀️ Mode Terang";
+        }
+
+        modeToggle.addEventListener("click", function () {
+          body.classList.toggle("dark-mode");
+          if (body.classList.contains("dark-mode")) {
+            modeToggle.textContent = "☀️ Mode Terang";
+            localStorage.setItem("mode", "dark");
+          } else {
+            modeToggle.textContent = "🌙 Mode Gelap";
+            localStorage.setItem("mode", "light");
+          }
+        });
       });
     </script>
   </body>
