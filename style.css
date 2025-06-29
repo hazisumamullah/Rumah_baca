@@ -128,3 +128,37 @@
     height: 160px;
   }
 }
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.card.dark-mode,
+.modal-content.dark-mode {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+.navbar.dark-mode,
+footer.dark-mode {
+  background-color: #222;
+}
+
+.history-item {
+  background-color: #fff;
+  transition: transform 0.2s ease;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.history-item:hover {
+  transform: scale(1.01);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.history-item img {
+  height: 100px;
+  object-fit: cover;
+  width: 100%;
+}
