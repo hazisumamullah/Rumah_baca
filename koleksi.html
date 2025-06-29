@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Koleksi Buku - Rumah Baca Sembalun</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .history-item img {
+        height: 100px;
+        object-fit: cover;
+        width: 100%;
+      }
+      .history-item {
+        background-color: #fff;
+        transition: transform 0.2s ease;
+      }
+      .history-item:hover {
+        transform: scale(1.01);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+
+  <body class="light-mode">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="img/logo.png" alt="Logo Rumah Baca" class="logo-img me-3" />
+          <span class="fs-4 fw-bold">Rumah Baca</span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto me-3">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#home">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#about">Tentang</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="koleksi.html">Koleksi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pinjam.html"
+                ><i class="fas fa-book-reader"></i
+              ></a>
+            </li>
+          </ul>
+          <button id="modeToggle" class="btn btn-outline-light btn-sm">
+            🌙 Mode Gelap
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Judul Koleksi Buku di Tengah -->
+    <div class="text-center mt-4 mb-2">
+      <h1>Koleksi Buku</h1>
+    </div>
+
+    <!-- Terpopuler Minggu Ini -->
+    <div class="container mb-4">
+      <h4 class="mb-3">🔥 Buku Dengan Rating Tertinggi</h4>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <!-- Buku Psychology of Money -->
+        <div class="col">
+          <div class="card h-100 position-relative">
+            <img
+              src="img/Buku.png"
+              class="card-img-top"
+              alt="Psychology of Money"
+            />
+            <span
+              class="badge bg-warning text-dark position-absolute top-0 start-0 m-2"
+              >🔥 Rating</span
+            >
+            <div class="card-body">
+              <h5 class="card-title">Psychology of Money</h5>
+              <p class="card-text">
+                Buku yang mengulas perilaku manusia terhadap uang dan keputusan
+                finansial.
+              </p>
+              <div class="text-warning">
+                ★★★★★ <small class="text-muted">5.0 / 5</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Buku Tambahan -->
+        <div class="col">
+          <div class="card h-100 position-relative">
+            <img
+              src="img/kisah nabi.jpg"
+              class="card-img-top"
+              alt="Petualangan Dunia Ajaib"
+            />
+            <span
+              class="badge bg-warning text-dark position-absolute top-0 start-0 m-2"
+              >🔥 Rating</span
+            >
+            <div class="card-body">
+              <h5 class="card-title">Kisah Nabi Dan Rasul</h5>
+              <p class="card-text">
+                Cerita penuh hikmah dari kehidupan para nabi.
+              </p>
+              <div class="text-warning">
+                ★★★★★ <small class="text-muted">4.9 / 5</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Buku Tambahan -->
+        <div class="col">
+          <div class="card h-100 position-relative">
+            <img
+              src="img/SAINS-2.jpg"
+              class="card-img-top"
+              alt="Petualangan Dunia Ajaib"
+            />
+            <span
+              class="badge bg-warning text-dark position-absolute top-0 start-0 m-2"
+              >🔥 Rating</span
+            >
+            <div class="card-body">
+              <h5 class="card-title">Petualangan Dunia Sains</h5>
+              <p class="card-text">
+                Panduan anak-anak memahami sains dengan cara menyenangkan.
+              </p>
+              <div class="text-warning">
+                ★★★★★ <small class="text-muted">4.8 / 5</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pencarian -->
+
+    <div class="container mb-4 d-flex justify-content-str">
+      <input
+        type="text"
+        id="searchInput"
+        class="form-control"
+        placeholder="Cari buku..."
+        style="max-width: 300px"
+      />
+    </div>
+
+    <!-- ===== Daftar Buku + Riwayat ===== -->
+    <div class="container my-5" id="main-content">
+      <div class="d-flex gap-4 align-items-start flex-wrap flex-md-nowrap">
+        <!-- Daftar Buku -->
+        <div class="flex-grow-1">
+          <div class="row g-4" id="bookContainer">
+            <!-- Buku 1 -->
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100">
+                <img
+                  src="img/kisah nabi.jpg"
+                  class="card-img-top"
+                  alt="Kisah Nabi dan Rasul"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Kisah Nabi dan Rasul</h5>
+                  <p class="card-text">
+                    Cerita hikmah dari kehidupan para nabi.
+                  </p>
+                  <button class="btn btn-primary btn-sm">Pinjam</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Buku 2 -->
+            <div class="col-md-6 col-lg-4">
+              <div class="card h-100">
+                <img
+                  src="img/buku.jpg"
+                  class="card-img-top"
+                  alt="Psychology of Money"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Psychology of Money</h5>
+                  <p class="card-text">
+                    Buku yang mengulas perilaku manusia terhadap uang dan
+                    keputusan finansial.
+                  </p>
+                  <button class="btn btn-primary btn-sm">Pinjam</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tambah buku lainnya di sini -->
+          </div>
+        </div>
+
+        <!-- Riwayat Buku -->
+        <div
+          class="list-group"
+          style="width: 300px; position: sticky; top: 100px"
+        >
+          <h5 class="mb-3">📚 Riwayat Aktivitas Buku</h5>
+
+          <div class="history-item">
+            <h6 class="mb-1">Psychology of Money</h6>
+            <small class="text-muted">1 jam lalu - Halaman 45</small>
+            <img src="img/Buku.png" alt="Psychology of Money" />
+          </div>
+
+          <div class="history-item">
+            <h6 class="mb-1">Kisah Nabi dan Rasul</h6>
+            <small class="text-muted">2 hari lalu - Halaman 120</small>
+            <img src="img/kisah nabi.jpg" alt="Kisah Nabi dan Rasul" />
+          </div>
+
+          <div class="history-item">
+            <h6 class="mb-1">Revolusi Teknologi</h6>
+            <small class="text-muted">3 minggu lalu - Halaman 85</small>
+            <img src="img/buku teknologi.png" alt="Revolusi Teknologi" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Pilihan Pinjam -->
+    <div
+      class="modal fade"
+      id="modalPinjam"
+      tabindex="-1"
+      aria-labelledby="modalPinjamLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalPinjamLabel">
+              Pilih Metode Peminjaman
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body text-center">
+            <p>Silakan pilih bagaimana Anda ingin meminjam buku ini:</p>
+            <div class="d-flex justify-content-center gap-3 mt-3">
+              <a
+                href="https://maps.app.goo.gl/FhMrUyQexkwGVW5x6"
+                target="_blank"
+                class="btn btn-secondary"
+                >Offline</a
+              >
+              <a href="pinjam.html" class="btn btn-primary">Online</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4">
+      <div class="container">
+        <div class="footer-logo mb-2">
+          <img src="img/logo.png" alt="Logo Rumah Baca" />
+        </div>
+        <p>Ikuti kami di media sosial:</p>
+        <div class="mb-3">
+          <!-- Instagram -->
+          <a
+            href="https://www.instagram.com/hazisumam_"
+            class="text-white me-3"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fab fa-instagram fa-lg"></i>
+          </a>
+
+          <!-- Facebook -->
+          <a
+            href="https://web.facebook.com/lok.dok.965"
+            class="text-white me-3"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fab fa-facebook fa-lg"></i>
+          </a>
+
+          <!-- Lokasi di Google Maps -->
+          <a
+            href="https://www.google.com/maps/place/Rumah+Baca+Sembalun"
+            class="text-white"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fas fa-map-marker-alt fa-lg"></i>
+          </a>
+        </div>
+        <p class="mb-0">
+          &copy; 2025 Rumah Baca Sembalun. Semua Hak Dilindungi.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="koleksi.js"></script>
+  </body>
+</html>

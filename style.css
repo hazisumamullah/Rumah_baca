@@ -1,0 +1,130 @@
+/* ===== Koleksi Buku Terpopuler Style ===== */
+
+/* Header */
+.header {
+  background: url("img/perpustakaan.jpeg") center/cover no-repeat;
+  height: 100vh;
+  color: white;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+}
+
+.logo-img {
+  width: 60px;
+  height: auto;
+  margin-right: 15px;
+}
+
+.footer-logo img {
+  width: 100px;
+}
+
+.light-mode {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+.dark-mode .navbar,
+.dark-mode footer {
+  background-color: #000000 !important;
+}
+
+.dark-mode .btn-light {
+  background-color: #444;
+  color: #fff;
+}
+
+.dark-mode section.bg-light {
+  background-color: #1f1f1f !important;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+/* Kartu Buku */
+.card {
+  overflow: hidden;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-img-top {
+  transition: transform 0.3s ease;
+  object-fit: cover;
+  width: 100%;
+  height: 250px;
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+/* ===== History / List Group ===== */
+
+.list-group {
+  width: 100%;
+}
+
+.history-item {
+  background-color: #fff;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ddd;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.history-item:hover {
+  transform: scale(1.01);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.history-item img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+/* Layout Utama */
+#main-content {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #main-content {
+    flex-direction: column;
+  }
+
+  .history-item img {
+    height: 160px;
+  }
+}
