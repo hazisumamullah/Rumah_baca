@@ -93,20 +93,23 @@ function buatBintang(rating) {
   const halfStar = rating % 1 >= 0.5;
   let starsHtml = "";
 
-  for (let i = 0; i < fullStars; i++)
+  for (let i = 0; i < fullStars; i++) {
     starsHtml += `<i class="fas fa-star text-warning"></i>`;
-  if (halfStar)
+  }
+  if (halfStar) {
     starsHtml += `<i class="fas fa-star-half-alt text-warning"></i>`;
-  for (let i = fullStars + halfStar; i < 5; i++)
+  }
+  for (let i = fullStars + halfStar; i < 5; i++) {
     starsHtml += `<i class="far fa-star text-warning"></i>`;
+  }
 
   return starsHtml;
 }
 
-// Menampilkan semua buku ke dalam HTML
+// Tampilkan semua buku ke dalam HTML
 function tampilkanBuku(data = daftarBuku) {
   const container = document.getElementById("bookContainer");
-  container.innerHTML = ""; // Bersihkan kontainer
+  container.innerHTML = "";
 
   data.forEach((buku) => {
     const card = document.createElement("div");
@@ -121,9 +124,13 @@ function tampilkanBuku(data = daftarBuku) {
             ${buatBintang(buku.rating)}
             <small class="text-muted ms-2">${buku.rating} / 5</small>
           </div>
-          <a href="pinjam.html?judul=${encodeURIComponent(
-            buku.judul
-          )}" class="btn btn-primary mt-auto">Pinjam Buku</a>
+          <button 
+            class="btn btn-primary mt-auto btn-pinjam" 
+            data-bs-toggle="modal" 
+            data-bs-target="#modalPinjam" 
+            data-judul="${buku.judul}">
+            Pinjam Buku
+          </button>
         </div>
       </div>
     `;
@@ -146,7 +153,29 @@ function setupPencarian() {
   });
 }
 
-// Inisialisasi saat halaman selesai dimuat
+// Tangani klik tombol Pinjam => update link Online di modal
+document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("btn-pinjam")) {
+    const judul = e.target.getAttribute("data-judul");
+    const tombolOnline = document.getElementById("btnPinjamOnline");
+    if (tombolOnline && judul) {
+      tombolOnline.href = `pinjam.html?judul=${encodeURIComponent(judul)}`;
+    }
+  }
+});
+
+// Toggle Mode Gelap & Terang
+const modeToggle = document.getElementById("modeToggle");
+const body = document.body;
+
+modeToggle.addEventListener("click", () => {
+  body.classList.toggle("dark-mode");
+  modeToggle.textContent = body.classList.contains("dark-mode")
+    ? "☀️ Mode Terang"
+    : "🌙 Mode Gelap";
+});
+
+// Inisialisasi saat halaman dimuat
 document.addEventListener("DOMContentLoaded", () => {
   tampilkanBuku();
   setupPencarian();
