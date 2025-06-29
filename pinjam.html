@@ -19,6 +19,7 @@
         background-color: #121212;
         color: #f1f1f1;
       }
+
       body.dark-mode .form-control,
       body.dark-mode .navbar,
       body.dark-mode .card,
@@ -27,6 +28,14 @@
         background-color: #1e1e1e;
         color: #fff;
         border-color: #444;
+      }
+
+      .footer a:hover {
+        color: #0d6efd;
+      }
+
+      .footer-logo img {
+        height: 60px;
       }
     </style>
   </head>
@@ -106,9 +115,9 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-4">
+    <footer class="footer bg-dark text-white text-center py-4 mt-5">
       <div class="container">
-        <div class="footer-logo mb-2">
+        <div class="footer-logo mb-3">
           <img src="img/logo.png" alt="Logo Rumah Baca" />
         </div>
         <p>Ikuti kami di media sosial:</p>
@@ -119,6 +128,7 @@
             class="text-white me-3"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Instagram"
           >
             <i class="fab fa-instagram fa-lg"></i>
           </a>
@@ -129,22 +139,24 @@
             class="text-white me-3"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Facebook"
           >
             <i class="fab fa-facebook fa-lg"></i>
           </a>
 
-          <!-- Lokasi di Google Maps -->
+          <!-- Google Maps -->
           <a
             href="https://www.google.com/maps/place/Rumah+Baca+Sembalun"
             class="text-white"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Google Maps"
           >
             <i class="fas fa-map-marker-alt fa-lg"></i>
           </a>
         </div>
         <p class="mb-0">
-          &copy; 2025 Rumah Baca Sembalun. Semua Hak Dilindungi.
+          &copy; 2025 <strong>Rumah Baca Sembalun</strong>. Semua Hak Dilindungi.
         </p>
       </div>
     </footer>
@@ -172,14 +184,12 @@
       }
 
       document.addEventListener("DOMContentLoaded", function () {
-        // Auto-isi judul buku dari URL jika ada
         const params = new URLSearchParams(window.location.search);
         const judul = params.get("judul");
         if (judul) {
           document.getElementById("judulBuku").value = judul;
         }
 
-        // Mode gelap/terang toggle
         const modeToggle = document.getElementById("modeToggle");
         const body = document.body;
         const mode = localStorage.getItem("mode");
